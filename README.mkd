@@ -58,13 +58,10 @@ riscv32-unknown-elf target support in Clang until
     git clone https://git.llvm.org/git/llvm.git
     cd llvm/tools
     git clone https://git.llvm.org/git/clang.git/
-    cd clang
-    wget https://reviews.llvm.org/D46822?download=true -O baremetal.patch
-    patch -p0 < baremetal.patch
-    cd ../../
+    cd ..
     mkdir build && cd build
     cmake -G Ninja -DCMAKE_BUILD_TYPE="Debug" \
-      -DBUILD_SHARED_LIBS=True -DLLVM_USE_SPLIT_DWARF=True \
+      -DBUILD_SHARED_LIBS=False -DLLVM_USE_SPLIT_DWARF=True \
       -DLLVM_OPTIMIZED_TABLEGEN=True \
       -DLLVM_BUILD_TESTS=True \
       -DDEFAULT_SYSROOT="/path/to/riscv-gcc-install-path/riscv32-unknown-elf" \
